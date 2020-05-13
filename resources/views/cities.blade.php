@@ -3,12 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Города</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link href="{{ asset('/css/app.css') }}"  rel="stylesheet">
+        <script src="{{ asset('/js/app.js') }}"></script>
+        <script src="{{ asset('/js/addcity.js') }}"></script>
 
         <!-- Styles -->
         <style>
@@ -73,7 +76,7 @@
                 <div class="title m-b-md">
                     Города
                 </div>
-                {!! Form::model($city, ['action' => 'СitiesController@add']) !!}
+                {!! Form::model($city, ['action' => 'СitiesController@add', 'id' => 'addcity']) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'Название города') !!}
                     {!! Form::text('name', null, ['class' => 'form-control']) !!}
