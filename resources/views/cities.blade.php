@@ -76,28 +76,31 @@
                 <div class="title m-b-md">
                     Города
                 </div>
-                {!! Form::model($city, ['action' => 'СitiesController@add', 'id' => 'addcity']) !!}
+                {!! Form::model($city, ['action' => 'СitiesController@store', 'id' => 'addcity']) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'Название города') !!}
-                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('latitude', 'Широта') !!}
-                    {!! Form::text('latitude', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('latitude', null, ['class' => 'form-control', 'required' => 'required']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('longitude', 'Долгота') !!}
-                    {!! Form::text('longitude', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('longitude', null, ['class' => 'form-control', 'required' => 'required']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('population', 'Численность населения') !!}
-                    {!! Form::text('population', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('population', null, ['class' => 'form-control', 'required' => 'required']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::submit('Отправить', ['class' => 'btn btn-primary']) !!}
                 </div>
 
                 {!! Form::close() !!}
+                <div id="alert-area">
+
+                </div>
             </div>
         </div>
     </body>

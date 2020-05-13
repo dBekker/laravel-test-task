@@ -13,11 +13,18 @@ class СitiesController extends Controller
     public function index(){
 
         $city = new Сities;
-        //dd($city);
         return view('cities', ['city' => $city ]);
     }
 
-    public function add() {
-        return 'ok';
+    public function store(Request $request) {
+
+        $errcode = 0;
+        $data = $request->all();
+        $city = new Сities;
+        $city->fill($data);
+        if(!$city->save()) {
+            $errcode = 1;
+        }
+        return $errcode;
     }
 }

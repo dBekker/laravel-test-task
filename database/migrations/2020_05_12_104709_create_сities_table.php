@@ -16,7 +16,7 @@ class CreateсitiesTable extends Migration
         Schema::create('сities', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('latitude');
+            $table->string('latitude');
             $table->string('longitude');
             $table->string('population');
             $table->timestamps();
