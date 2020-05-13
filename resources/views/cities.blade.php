@@ -69,39 +69,61 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref">
 
 
             <div class="content">
+                <table class="table @if (count($cities) === 0) invisible @endif" id="cityTable">
+                    <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Населенный пункт</th>
+                        <th scope="col">Широта</th>
+                        <th scope="col">Долгота</th>
+                        <th scope="col">Кол-во населения</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                     @foreach ($cities as $city)
+                    <tr>
+                        <th scope="row">{{ $city->id }}</th>
+                        <td>{{ $city->name }}</td>
+                        <td>{{ $city->latitude }}</td>
+                        <td>{{ $city->longitude }}</td>
+                        <td>{{ $city->population }}</td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
                 <div class="title m-b-md">
-                    Города
+                    Добавить город
                 </div>
-                {!! Form::model($city, ['action' => 'СitiesController@store', 'id' => 'addcity']) !!}
+                {{ Form::model($city, ['action' => 'СitiesController@store', 'id' => 'addcity']) }}
                 <div class="form-group">
-                    {!! Form::label('name', 'Название города') !!}
-                    {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                </div>
-                <div class="form-group">
-                    {!! Form::label('latitude', 'Широта') !!}
-                    {!! Form::text('latitude', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                {{ Form::label('name', 'Название города') }}
+                {{ Form::text('name', null, ['class' => 'form-control', 'required' => 'required']) }}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('longitude', 'Долгота') !!}
-                    {!! Form::text('longitude', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                {{ Form::label('latitude', 'Широта') }}
+                {{ Form::text('latitude', null, ['class' => 'form-control', 'required' => 'required']) }}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('population', 'Численность населения') !!}
-                    {!! Form::text('population', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                {{ Form::label('longitude', 'Долгота') }}
+                {{ Form::text('longitude', null, ['class' => 'form-control', 'required' => 'required']) }}
                 </div>
                 <div class="form-group">
-                    {!! Form::submit('Отправить', ['class' => 'btn btn-primary']) !!}
+                {{ Form::label('population', 'Численность населения') }}
+                {{ Form::text('population', null, ['class' => 'form-control', 'required' => 'required']) }}
+                </div>
+                <div class="form-group">
+                {{ Form::submit('Отправить', ['class' => 'btn btn-primary']) }}
                 </div>
 
-                {!! Form::close() !!}
-                <div id="alert-area">
+                {{ Form::close() }}
+<div id="alert-area">
 
-                </div>
-            </div>
-        </div>
-    </body>
+</div>
+</div>
+</div>
+</body>
 </html>

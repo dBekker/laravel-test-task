@@ -8,18 +8,17 @@ $(document).ready(function(){
             url: $form.attr('action'),
             data: $form.serialize(),
             success: function(result) {
-                errCode = parseInt(result);
-                showRequestStatus(errCode)
+                errCode = parseInt(result.errCode);
+                showRequestResult(errCode, result.data)
             },
             error: function() {
                 errCode = 2;
-                showRequestStatus(errCode)
+                showRequestResult(errCode)
             }
         });
     });
 
-    function showRequestStatus(errCode) {
-        console.log(errCode);
+    function showRequestResult(errCode, data = null) {
         msg = '';
         switch (errCode) {
             case 0:  msg = "Запись успешно добавлена в БД"; break;
@@ -28,7 +27,9 @@ $(document).ready(function(){
         }
         if(errCode == 0) {
             $tag = '<div class="alert alert-success" role="alert">' + msg + '</div>';
-            udateTable();
+            if(data !== null) {
+                udateTable(data);
+            }
         } else {
             $tag = '<div class="alert alert-danger" role="alert">' + msg + '</div>';
         }
@@ -38,7 +39,26 @@ $(document).ready(function(){
         },5000);
     }
 
-    function udateTable() {
-
+    function udateTable(data) {
+        $table = $('#cityTable');
+        $table.toggleClass('invisible', false);
+        body = $table.find('tbody');
+        tr = $('<tr>');
+        td = $('<th scope="row">');
+        td.text(data.id);
+        tr.append(td);
+        td = $('<td>');
+        td.text(data.name);
+        tr.append(td);
+        td = $('<td>');
+        td.text(data.latitude);
+        tr.append(td);
+        td = $('<td>');
+        td.text(data.longitude);
+        tr.append(td);
+        td = $('<td>');
+        td.text(data.population);
+        tr.append(td);
+        body.append(tr);
     }
 });
