@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="{{ asset('/css/app.css') }}"  rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -61,6 +62,7 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
         </style>
     </head>
     <body>
@@ -71,7 +73,28 @@
                 <div class="title m-b-md">
                     Города
                 </div>
+                {!! Form::model($city, ['action' => 'СitiesController@add']) !!}
+                <div class="form-group">
+                    {!! Form::label('name', 'Название города') !!}
+                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('latitude', 'Широта') !!}
+                    {!! Form::text('latitude', null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('longitude', 'Долгота') !!}
+                    {!! Form::text('longitude', null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('population', 'Численность населения') !!}
+                    {!! Form::text('population', null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::submit('Отправить', ['class' => 'btn btn-primary']) !!}
+                </div>
 
+                {!! Form::close() !!}
             </div>
         </div>
     </body>

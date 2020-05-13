@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Сities;
 
 class СitiesController extends Controller
 {
@@ -11,6 +12,12 @@ class СitiesController extends Controller
      */
     public function index(){
 
-        return view('cities');
+        $city = new Сities;
+        //dd($city);
+        return view('cities', ['city' => $city ]);
+    }
+
+    public function add() {
+        return 'ok';
     }
 }
