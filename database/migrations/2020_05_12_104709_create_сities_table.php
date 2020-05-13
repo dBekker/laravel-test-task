@@ -13,7 +13,7 @@ class CreateсitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('сities', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('latitude');

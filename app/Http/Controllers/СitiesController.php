@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Сities;
 
 class СitiesController extends Controller
 {
@@ -12,8 +11,8 @@ class СitiesController extends Controller
      */
     public function index(){
 
-        $city = new Сities;
-        $cities = Сities::all();
+        $city = new \App\City;
+        $cities = \App\City::all();
         return view('cities', ['city' => $city, 'cities' =>  $cities]);
     }
 
@@ -21,7 +20,7 @@ class СitiesController extends Controller
 
         $responce = ['errCode' => 0, 'data' => null];
         $data = $request->all();
-        $city = new Сities;
+        $city = new \App\City;
         $city->fill($data);
         if(!$city->save()) {
             $responce['errCode'] = 1;
